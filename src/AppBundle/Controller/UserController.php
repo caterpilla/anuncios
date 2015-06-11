@@ -10,17 +10,18 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\DependencyInjection\ContainerAwareHttpKernel;
 
 class UserController extends Controller{
-	private $conn, $session;
-	public function __construct(){
+    private $conn, $session;
+    public function __construct(){
         $this -> session = new Session();
-	}
+    }
     /**
-     * @Route("/login", name="home")
-     */
+    * @Route("/login", name="home")
+    */
     public function userLoginAction(Request $request){
-    	$pwd = $request -> get('pwd');
-    	$email = $request -> get('email');
-    	$this -> conn = $this -> get('database_connection');
+        $this -> conn = $this -> get('database_connection');
+        $pwd = $request -> get('pwd');
+        $email = $request -> get('email');
+        $this -> conn = $this -> get('database_connection');
         $user = $this -> conn -> fetchAssoc(
             sprintf(
                 "select email, pwd, id from user where email = '%s' and status = 1",
@@ -49,18 +50,20 @@ class UserController extends Controller{
         return $this->redirect($this->generateUrl('home'));
     }
     /**
-     * @Route("/conta", name="userMyAccount")
-     */
+    * @Route("/conta", name="userMyAccount")
+    */
     public function userMyAccountAction(Request $request){
+        $this -> conn = $this -> get('database_connection');
 
     }
     /**
-     * @Route("/criar-conta", name="userSignup")
-     */
+    * @Route("/criar-conta", name="userSignup")
+    */
     public function userSignupAction(Request $request){
-    	$email = $request -> get('email');
-    	$pwd = $request -> get('pwd');
-    	$name = $request -> get('name');
+        $this -> conn = $this -> get('database_connection');
+        $email = $request -> get('email');
+        $pwd = $request -> get('pwd');
+        $name = $request -> get('name');
         $this -> conn = $this -> get('database_connection');
         $this -> conn -> insert(
             'user',
@@ -84,9 +87,10 @@ class UserController extends Controller{
         return $this->redirect($this->generateUrl('home'));
     }
     /**
-     * @Route("/esqueci-minha-senha", name="userForget")
-     */
+    * @Route("/esqueci-minha-senha", name="userForget")
+    */
     public function userForgetAction(Request $request){
+        $this -> conn = $this -> get('database_connection');
 
     }
 }

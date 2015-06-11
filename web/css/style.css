@@ -1,0 +1,13 @@
+.wrapper { max-width:960px; margin:0 auto; padding:0 10px; }
+
+.turquoise { background:#1abc9c; }
+.green-sea { background:#16a085; }
+
+.bar-search { padding:10px 0; }
+.bar-search form { position:relative; }
+.bar-search form button { height:33px; width:50px; border:0; background:0; top:0; right:0; z-index:10; position:absolute; }
+
+header h1 { float:left; font-size:22px; color:#fff; margin:10px 0; }
+header h1 a { color:#fff; }
+header .btn { color:#fff; background:#16a085; margin-top:4px; font-size:16px; border:1px inset #fff; }
+header .btn:hover { color:#fff; border:1px outset #fff; }
